@@ -7,4 +7,4 @@ headline: |
 ---
 
 <!-- this is a subheadline -->
-If you want to know more about performance metrics, you came to the right place.
+If you want to know more about performance metrics, you came to the right place. Let's explore
