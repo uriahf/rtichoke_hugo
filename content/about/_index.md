@@ -2,7 +2,7 @@
 cascade:
   headless: true
 description: |
-  This blog is dedicated to rtichoke
+  This blog is dedicated to rtichoke, let's explore!
 show_header: true
 sidebar_left: false
 title: About rtichoke
