@@ -1,6 +1,6 @@
 ---
-title: Hi Hugo
-author: Uriah Finkel
+title: "Hi Hugo"
+author: "Uriah Finkel"
 date: '2022-03-26'
 slug: []
 categories: []

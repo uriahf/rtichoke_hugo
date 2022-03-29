@@ -1,0 +1,16 @@
+---
+title: "rtichoke quick start"
+author: ''
+date: '2022-03-27'
+slug: []
+categories: []
+tags: []
+---
+ let's start!
+ 
+ 
+```{r echo=FALSE}
+knitr::include_url('https://rtichoke-003-walkthrough.netlify.app/rtichoke_003_walkthrough.html#1')
+```
+ 
+ 

@@ -1,8 +1,8 @@
 baseURL = "https://rtichoke-blog.netlify.app/"
 theme = "hugo-apero"
 languageCode = "en"
-title = "Hugo Apéro"
-author = "Alison Hill"
+title = "rtichoke blog"
+author = "Uriah Finkel"
 copyright = "" # set to override the auto generated copyright using org info and now year
 googleAnalytics = ""
 disqusShortname = "" # see params.utterances to use utterances instead of Disqus
@@ -30,9 +30,8 @@ enableEmoji = true
 [params]
   orgName = "RStudio"
   orgLocal = "Anywhere"
-  description = "A modern, beautiful, and easily configurable blog theme for Hugo."
+  description = "A blog that is dedicated for the rtichoke package and for performance metrics"
   favicon = "/img/favicon.ico"
-  logo = "/img/blogophonic-mark-dark.png"
   mainSections = ["blog", "project", "talk"]
   navallcaps = true
   # show/hide social icons in site header & footer
