@@ -4,6 +4,7 @@ title: rtichoke 0.0.3 walkthrough
 date: "2022-03-27"
 date_end: "2021-03-27"
 draft: false
+featured: yes
 summary: 'Presenting rtichoke 0.0.3 in Clalit Innovation'
 links:
 - icon: images
