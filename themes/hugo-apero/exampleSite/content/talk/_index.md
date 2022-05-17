@@ -1,5 +1,5 @@
 ---
-title: Talks that Last
+title: Talks
 description: |
   This is a list for your talks, workshops, or other events with a time, date, and place.
 author: "The R Markdown Team @RStudio"
@@ -13,7 +13,7 @@ layout: list # list, list-sidebar
 
 # for list-sidebar layout
 sidebar: 
-  title: Talks that Last
+  title: Talks
   description: |
     This is a list for your talks, workshops, or 
     other events with a time, date, and place. 
