@@ -16,4 +16,9 @@ links:
   icon_pack: fab
   name: code
   url: https://github.com/uriahf/rtichoke_003_walkthrough
+  url: https://github.com/apreshill/talks/tree/master/rmd-valentine
+- icon: play-circle
+  icon_pack: fas
+  name: video
+  url: https://youtu.be/qrSB0GSyErk
 ---
