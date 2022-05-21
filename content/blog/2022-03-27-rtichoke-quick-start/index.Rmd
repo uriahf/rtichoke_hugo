@@ -27,7 +27,7 @@ In the following example you can see how Box-Cox transformation improves the dis
 ### The original ROC curve by the tidymodes
 
 
-```{r message=FALSE, warning=FALSE}
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 
 library(caret)
 library(tidymodels)
@@ -122,7 +122,7 @@ trans_roc_plot <-
   ylab("True Positive Rate") + 
   theme_bw()+ 
   theme(legend.position = c(.8, .2)) + 
-  scale_colour_manual(values = c("Natural Units" = "black", "Inverse Units" = "blue")) + 
+  scale_colour_manual(values = c("Natural Units" = "grey", "Inverse Units" = "black")) + 
   geom_abline(intercept = 0, slope = 1, col = "grey", lty = 2)  +   
   theme(panel.background = element_rect(fill = '#fff7f5', color = '#fff7f5'),
         plot.background = element_rect(fill = "#fff7f5"),
@@ -138,7 +138,7 @@ trans_roc_plot
 
 ### ROC curve by rtichoke
 
-```{r message=FALSE, warning=FALSE}
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 library(rtichoke)
 
 create_roc_curve(
@@ -149,7 +149,7 @@ create_roc_curve(
                             example_test, type = "prob")[,1]
   ),
   reals = list(example_test$Class == "One"),
-  size = 500, col_values = c("black", "blue")
+  size = 500, col_values = c("grey", "black")
 ) %>% 
 plotly::layout(plot_bgcolor = "#fff7f5", 
                paper_bgcolor= "#fff7f5")

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Talks on rtichoke blog</title>
+    <link>https://rtichoke-blog.netlify.app/talk/</link>
+    <description>Recent content in Talks on rtichoke blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 01 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://rtichoke-blog.netlify.app/talk/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Decision Curve - Step by Step</title>
+      <link>https://rtichoke-blog.netlify.app/talk/2022-05-01-decision-curve-step-by-step/</link>
+      <pubDate>Sun, 01 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://rtichoke-blog.netlify.app/talk/2022-05-01-decision-curve-step-by-step/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>From Haifa University to Clalit innovation</title>
+      <link>https://rtichoke-blog.netlify.app/talk/2022-04-05-from-haifa-university-to-clalit-innovation/</link>
+      <pubDate>Tue, 05 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://rtichoke-blog.netlify.app/talk/2022-04-05-from-haifa-university-to-clalit-innovation/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
