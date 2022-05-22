@@ -1,40 +1,37 @@
 ---
-title: A Simple Examle from Feature Engineering by Max Kuhn and Kjell Johnson
+title: Box-Cox transformation from Feature Engineering by Max Kuhn and Kjell Johnson
 author: ''
 date: '2022-05-19'
 slug: []
-categories: []
+categories: [replications, roc]
 tags: []
 output: 
   html_document: 
     keep_md: yes
 ---
 
-Hi! Welcome to rtichoke blog!
+## Welcome to rtichoke blog!
 
-This blog will be dedicated to the {rtichoke} package, which means that hopefully 
+This blog will be dedicated to the {rtichoke} package, which means that it will contain posts that are related to performance metrics and the possible related usability of {rtichoke}.
 
+## Replications
 
-In order to make the package easier to use I plan to reproduce other people's code with rtichoke.
+In order to make the package easier to use I plan to reproduce other people's code with rtichoke, these kind of posts will be available under the category "replications".
 
-My first choice is to 
+My first choice is to replicate the first example from the book ["Feature Engineering and Selection: A Practical Approach for Predictive Models by Max Kuhn and Kjell Johnson"](http://www.feat.engineering/a-simple-example.html).
 
-This book is dedicated to 
+In this example you can see how Box-Cox transformation improves the discrimination capability of the logistic regression model without using any additional information.
 
-In the following example you can see how Box-Cox transformation improves the discrimination capability of the logistic regression model without using any additionalk information.
+## Original Code
 
+The code is almost identical to the original code that can be found [on github](https://github.com/topepo/FES/blob/master/01_Introduction/1_01_A_Simple_Example.R).
 
-### The original ROC curve by the tidymodes
+### Preparing the Data
 
-
-```{r echo=FALSE, message=FALSE, warning=FALSE}
-
+```{r message=FALSE, warning=FALSE}
 library(caret)
 library(tidymodels)
-# library(pROC)
 library(ggthemes)
-
-# Create example data ----------------------------------------------------------
 
 data(segmentationData)
 
@@ -53,34 +50,23 @@ example_test  <-
   segmentationData %>% 
   dplyr::filter(Case == "Test") %>% 
   dplyr::select(-Case)
+```
 
-# Do analysis in natural units -------------------------------------------------
+
+### Training the Models
+
+```{r}
 
 example_ctrl <- 
   trainControl(method = "none",
                classProbs = TRUE,
                summaryFunction = twoClassSummary)
 
-natural_plot <- 
-  ggplot(example_train) + 
-  aes(x = PredictorA, y = PredictorB, color = Class) +
-  geom_point(alpha = .3, cex = 1.5) + 
-  theme(legend.position = c(.1, .8)) +
-  scale_colour_tableau() + 
-  ggtitle("(a)")
-
 natural_terms <- train(Class ~ PredictorA + PredictorB,
                        data = example_train,
                        method = "glm",
                        metric = "ROC",
                        trControl = example_ctrl)
-
-natural_dat <-
-  example_test %>% 
-  mutate(prob = predict(natural_terms, example_test, type = "prob")[,1]) %>% 
-  roc_curve(Class, prob) %>% 
-  mutate(Format = "Natural Units")
-
 
 trans_terms <- train(Class ~ PredictorA + PredictorB,
                      data = example_train,
@@ -89,31 +75,32 @@ trans_terms <- train(Class ~ PredictorA + PredictorB,
                      metric = "ROC",
                      trControl = example_ctrl)
 
+```
+
+
+
+### Creating ROC Curve with {yardstick}
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+
+natural_dat <-
+  example_test %>% 
+  mutate(prob = predict(natural_terms, example_test, type = "prob")[,1]) %>% 
+  roc_curve(Class, prob) %>% 
+  mutate(Format = "Natural Units")
+
 trans_dat <-
   example_test %>% 
   mutate(prob = predict(trans_terms, example_test, type = "prob")[,1]) %>% 
   roc_curve(Class, prob) %>% 
   mutate(Format = "Inverse Units") 
 
-# https://bookdown.org/max/FES/a-simple-example.html#fig:intro-natural
-# panel (a)
-trans_plot <- 
-  ggplot(example_train) + 
-  aes(x = 1/PredictorA, y = 1/PredictorB, color = Class) +
-  geom_point(alpha = .3, cex = 1.5) + 
-  theme(legend.position = c(.1, .8)) +
-  scale_colour_tableau() + 
-  xlab("1/A") + ylab("1/B") + 
-  ggtitle("(a)")
-
-# Combine for plot -------------------------------------------------------------
-
 both_dat <- 
   bind_rows(natural_dat, trans_dat) %>%
   mutate(Format = factor(Format, levels = c("Natural Units", "Inverse Units")))
 
-# https://bookdown.org/max/FES/a-simple-example.html#fig:intro-natural
-# panel (b)
 trans_roc_plot <- 
   ggplot(both_dat) +
   geom_step(aes(x = 1 - specificity, y = sensitivity, color = Format)) + 
@@ -135,8 +122,9 @@ trans_roc_plot <-
 trans_roc_plot
 
 ```
+## rtichoke code
 
-### ROC curve by rtichoke
+### Creating ROC Curve with {rtichoke}
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 library(rtichoke)
@@ -149,7 +137,8 @@ create_roc_curve(
                             example_test, type = "prob")[,1]
   ),
   reals = list(example_test$Class == "One"),
-  size = 500, col_values = c("grey", "black")
+  size = 500, 
+  col_values = c("grey", "black")
 ) %>% 
 plotly::layout(plot_bgcolor = "#fff7f5", 
                paper_bgcolor= "#fff7f5")
