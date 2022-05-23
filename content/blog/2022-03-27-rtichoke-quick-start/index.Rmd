@@ -16,7 +16,7 @@ This blog will be dedicated to the {rtichoke} package, which means that it will 
 
 ## Replications
 
-In order to make the package easier to use I plan to reproduce other people's code with rtichoke, these kind of posts will be available under the category "replications".
+To make the package easier to use I plan to reproduce other people's code with rtichoke, posts of this kind will be available under the category "replications".
 
 My first choice is to replicate the first example from the book ["Feature Engineering and Selection: A Practical Approach for Predictive Models by Max Kuhn and Kjell Johnson"](http://www.feat.engineering/a-simple-example.html).
 
@@ -32,6 +32,7 @@ The code is almost identical to the original code that can be found [on github](
 library(caret)
 library(tidymodels)
 library(ggthemes)
+library(ggplot2)
 
 data(segmentationData)
 
@@ -107,7 +108,7 @@ trans_roc_plot <-
   coord_equal() + 
   xlab("False Positive Rate") + 
   ylab("True Positive Rate") + 
-  theme_bw()+ 
+  theme_classic()+ 
   theme(legend.position = c(.8, .2)) + 
   scale_colour_manual(values = c("Natural Units" = "grey", "Inverse Units" = "black")) + 
   geom_abline(intercept = 0, slope = 1, col = "grey", lty = 2)  +   
@@ -122,11 +123,13 @@ trans_roc_plot <-
 trans_roc_plot
 
 ```
+
+
 ## rtichoke code
 
 ### Creating ROC Curve with {rtichoke}
 
-```{r echo=FALSE, message=FALSE, warning=FALSE}
+```{r echo=TRUE, message=FALSE, warning=FALSE}
 library(rtichoke)
 
 create_roc_curve(
