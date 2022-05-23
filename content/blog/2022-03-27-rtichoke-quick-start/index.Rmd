@@ -83,7 +83,7 @@ trans_terms <- train(Class ~ PredictorA + PredictorB,
 ### Creating ROC Curve with {yardstick}
 
 
-```{r echo=FALSE, message=FALSE, warning=FALSE}
+```{r echo=TRUE, message=FALSE, warning=FALSE}
 
 
 natural_dat <-
@@ -114,11 +114,9 @@ trans_roc_plot <-
   geom_abline(intercept = 0, slope = 1, col = "grey", lty = 2)  +   
   theme(panel.background = element_rect(fill = '#fff7f5', color = '#fff7f5'),
         plot.background = element_rect(fill = "#fff7f5"),
-        panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank(),
         legend.background = element_blank(),
-        legend.box.background = element_blank(),
-        strip.background = element_blank())
+        legend.box.background = element_blank()
+        )
 
 trans_roc_plot
 
@@ -147,4 +145,6 @@ plotly::layout(plot_bgcolor = "#fff7f5",
                paper_bgcolor= "#fff7f5")
 
 ```
+
+
 

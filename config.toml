@@ -28,8 +28,6 @@ enableEmoji = true
     style = "github"
     
 [params]
-  orgName = "RStudio"
-  orgLocal = "Anywhere"
   description = "A blog that is dedicated for the rtichoke package and for performance metrics"
   favicon = "/img/favicon.ico"
   mainSections = ["blog", "project", "talk"]
