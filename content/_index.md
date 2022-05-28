@@ -5,7 +5,7 @@ action_type: text
 description: Performance metrics indicate about... performance. And as a data scientist it is something you would like to optimise. But alot of heuristics are misleading and confusing, specially when the outcome is binary and you want to dichotomies estimated probabilities. Here I'm going to share some useful insights.
 image_left: true
 images:
-- img/gaston.png
+- gaston_rtichoke_resized.png
 show_action_link: true
 show_social_links: true
 subtitle: things a data scientist should know about performance metrics
