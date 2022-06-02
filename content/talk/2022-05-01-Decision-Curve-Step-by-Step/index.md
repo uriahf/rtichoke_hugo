@@ -1,6 +1,6 @@
 ---
 title: "Decision Curve - Step by Step"
-draft: false
+draft: true
 featured: true
 authors: 
   - Uriah Finkel
