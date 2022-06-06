@@ -10,6 +10,12 @@ output:
     keep_md: yes
 ---
 
+```{r message=FALSE, warning=FALSE, include=FALSE}
+xaringanExtra::use_panelset()
+xaringanExtra::style_panelset_tabs(font_family = "inherit")
+```
+
+
 ## Welcome to rtichoke blog!
 
 This blog will be dedicated to the {rtichoke} package, which means that it will contain posts that are related to performance metrics and the possible related usability of {rtichoke}.
@@ -30,12 +36,24 @@ The code is almost identical to the original code that can be found [on github](
 
 ```{r message=FALSE, warning=FALSE, include=FALSE}
 ggplot2::theme_set(ggplot2::theme_classic())
+# ggplot2::theme_update(
+#   panel.background = ggplot2::element_rect(fill = '#fff7f5', color = '#fff7f5'),
+#         plot.background = ggplot2::element_rect(fill = "#fff7f5"),
+#         legend.background = ggplot2::element_blank(),
+#         legend.box.background = ggplot2::element_blank()
+# )
+
 ggplot2::theme_update(
-  panel.background = ggplot2::element_rect(fill = '#fff7f5', color = '#fff7f5'),
-        plot.background = ggplot2::element_rect(fill = "#fff7f5"),
-        legend.background = ggplot2::element_blank(),
-        legend.box.background = ggplot2::element_blank()
+  rect = ggplot2::element_rect(fill = "transparent"),
+      panel.background = ggplot2::element_rect(fill='transparent'), #transparent panel bg
+    plot.background = ggplot2::element_rect(fill='transparent', color=NA), #transparent plot bg
+    panel.grid.major = ggplot2::element_blank(), #remove major gridlines
+    panel.grid.minor = ggplot2::element_blank(), #remove minor gridlines
+    legend.background = ggplot2::element_rect(fill='transparent'), #transparent legend bg
+    legend.box.background = ggplot2::element_rect(fill='transparent') #transparent legend panel
 )
+
+
 ```
 
 
@@ -94,25 +112,27 @@ trans_terms <- train(Class ~ PredictorA + PredictorB,
 
 ### Creating ROC Curve with {yardstick}
 
-
-```{r echo=TRUE, message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE, eval=FALSE}
 
 
 natural_dat <-
   example_test %>% 
-  mutate(prob = predict(natural_terms, example_test, type = "prob")[,1]) %>% 
+  mutate(
+    prob = predict(natural_terms, example_test, type = "prob")[,1]) %>% 
   roc_curve(Class, prob) %>% 
   mutate(Format = "Natural Units")
 
 trans_dat <-
   example_test %>% 
-  mutate(prob = predict(trans_terms, example_test, type = "prob")[,1]) %>% 
+  mutate(
+    prob = predict(trans_terms, example_test, type = "prob")[,1]) %>% 
   roc_curve(Class, prob) %>% 
   mutate(Format = "Inverse Units") 
 
 both_dat <- 
   bind_rows(natural_dat, trans_dat) %>%
-  mutate(Format = factor(Format, levels = c("Natural Units", "Inverse Units")))
+  mutate(
+    Format = factor(Format, levels = c("Natural Units", "Inverse Units")))
 
 trans_roc_plot <- 
   ggplot(both_dat) +
@@ -126,16 +146,31 @@ trans_roc_plot <-
                "Inverse Units" = "black")) + 
   geom_abline(intercept = 0, slope = 1, col = "grey", lty = 2) 
 
-trans_roc_plot
+
+
+```
+
+![](trans_roc_plot.svg) 
+
+
+
+```{r eval=FALSE, include=FALSE}
+
+# ggsave("./content/blog/2022-06-06-cox-box-transformation/trans_roc_plot.svg",    
+#        # plot = trans_roc_plot,
+#        bg='transparent', 
+#        units = "px")
 
 ```
 
 
 ## rtichoke code
 
-### Creating ROC Curve with {rtichoke}
+### Creating ROC Curve with {rtichoke} 
 
-```{r echo=TRUE, message=FALSE, warning=FALSE}
+#### Stratified By Probability Threshold
+
+```{r message=FALSE, warning=FALSE, eval=FALSE}
 library(rtichoke)
 
 create_roc_curve(
@@ -146,7 +181,27 @@ create_roc_curve(
                             example_test, type = "prob")[,1]
   ),
   reals = list(example_test$Class == "One"),
-  size = 500, 
+  size = 400, 
+  col_values = c("grey", "black")
+) 
+
+```
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(rtichoke)
+
+create_roc_curve(
+  probs = list(
+    "Natural Units" = 
+      predict(natural_terms, 
+                            example_test, type = "prob")[,1],
+    "Inverse Units" = 
+      predict(trans_terms, 
+                            example_test, type = "prob")[,1]
+  ),
+  reals = list(example_test$Class == "One"),
+  size = 400, 
   col_values = c("grey", "black")
 ) %>% 
 plotly::layout(plot_bgcolor = "#fff7f5", 
@@ -154,5 +209,50 @@ plotly::layout(plot_bgcolor = "#fff7f5",
 
 ```
 
+
+
+#### Stratified By Percent Positives Conditional Rate
+
+
+```{r message=FALSE, warning=FALSE, eval=FALSE}
+library(rtichoke)
+
+create_roc_curve(
+  probs = list(
+    "Natural Units" = predict(natural_terms, 
+                            example_test, type = "prob")[,1],
+    "Inverse Units" = predict(trans_terms, 
+                            example_test, type = "prob")[,1]
+  ),
+  reals = list(example_test$Class == "One"),
+  stratified_by = "ppcr",
+  size = 400, 
+  col_values = c("grey", "black")
+) 
+
+```
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(rtichoke)
+
+create_roc_curve(
+  probs = list(
+    "Natural Units" = 
+      predict(natural_terms, 
+                            example_test, type = "prob")[,1],
+    "Inverse Units" = 
+      predict(trans_terms, 
+                            example_test, type = "prob")[,1]
+  ),
+  reals = list(example_test$Class == "One"),
+  stratified_by = "ppcr",
+  size = 400, 
+  col_values = c("grey", "black")
+) %>% 
+plotly::layout(plot_bgcolor = "#fff7f5", 
+               paper_bgcolor= "#fff7f5")
+
+```
 
 
