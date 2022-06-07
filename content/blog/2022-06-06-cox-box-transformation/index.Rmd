@@ -158,12 +158,16 @@ trans_roc_plot <-
 
 ```
 
+```{r xaringan-panelset, echo=FALSE}
+xaringanExtra::use_panelset()
+```
+
 
 ## rtichoke code
 
-### Creating ROC Curve with {rtichoke} 
+### Creating ROC Curve with {rtichoke} {.panelset}
 
-#### Stratified By Probability Threshold
+#### By Probability Threshold
 
 ```{r message=FALSE, warning=FALSE, eval=FALSE}
 library(rtichoke)
@@ -206,7 +210,7 @@ plotly::layout(plot_bgcolor = "#fff7f5",
 
 
 
-#### Stratified By Percent Positives Conditional Rate
+#### By Percent Positives Conditional Rate
 
 
 ```{r message=FALSE, warning=FALSE, eval=FALSE}
