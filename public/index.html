@@ -24,24 +24,48 @@
   
     
   
-<meta name="description" content="Performance metrics indicate about... performance. And as a data scientist it is something you would like to optimise. But alot of heuristics are misleading and confusing, specially when the outcome is binary and you want to dichotomies estimated probabilities. Here I&#39;m going to share some useful insights.">
+<meta name="description" content="You can’t improve what you don’t measure, but if don&#39;t know how to measure you can&#39;t tell if you are improving. This blog will help you understand how to use the {rtichoke} package - a tool for interactive visualizations of performance metrics and curves. You will see a lot of reproducible codes, and hopefully by understanding how to use {rtichoke} you will be able to understand better how to measure the performance of your prediction models.">
 
 
 <meta property="og:site_name" content="rtichoke blog">
 <meta property="og:title" content="rtichoke blog">
-<meta property="og:description" content="Performance metrics indicate about... performance. And as a data scientist it is something you would like to optimise. But alot of heuristics are misleading and confusing, specially when the outcome is binary and you want to dichotomies estimated probabilities. Here I&#39;m going to share some useful insights." />
+<meta property="og:description" content="You can’t improve what you don’t measure, but if don&#39;t know how to measure you can&#39;t tell if you are improving. This blog will help you understand how to use the {rtichoke} package - a tool for interactive visualizations of performance metrics and curves. You will see a lot of reproducible codes, and hopefully by understanding how to use {rtichoke} you will be able to understand better how to measure the performance of your prediction models." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://rtichoke-blog.netlify.app/" />
 <meta property="og:locale" content="en">
 
 
 
-<meta name="twitter:card" content="summary_large_image"/><meta name="twitter:image" content="https://rtichoke-blog.netlify.app/img/gaston.png"/>
+<meta name="twitter:card" content="summary_large_image"/><meta name="twitter:image" content="https://rtichoke-blog.netlify.app/gaston_rtichoke_resized.png"/>
 
   <meta itemprop="name" content="rtichoke blog">
-<meta itemprop="description" content="Performance metrics indicate about... performance. And as a data scientist it is something you would like to optimise. But alot of heuristics are misleading and confusing, specially when the outcome is binary and you want to dichotomies estimated probabilities. Here I&#39;m going to share some useful insights.">
+<meta itemprop="description" content="You can’t improve what you don’t measure, but if don&#39;t know how to measure you can&#39;t tell if you are improving. This blog will help you understand how to use the {rtichoke} package - a tool for interactive visualizations of performance metrics and curves. You will see a lot of reproducible codes, and hopefully by understanding how to use {rtichoke} you will be able to understand better how to measure the performance of your prediction models.">
   
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7FG84QSX86"></script>
+<script>
+var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+var doNotTrack = (dnt == "1" || dnt == "yes");
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-7FG84QSX86', { 'anonymize_ip': true });
+}
+</script>
+
   
+<script type="application/javascript">
+var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+var doNotTrack = (dnt == "1" || dnt == "yes");
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'G-7FG84QSX86', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
   <!--[if IE]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
   <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
@@ -92,7 +116,7 @@
     <div class="flex-l items-center" style="flex-direction: row-reverse;">
       <div class="mh4 w-50-l tr">
         <h1 class="f2 f1-m f-subheadline-l fw5-ns mv4 lh-solid">rtichoke blog</h1>
-        <h2 class="f5 fw7 mt0 mb4 ttu tracked">things a data scientist should know about performance metrics</h2>
+        <h2 class="f5 fw7 mt0 mb4 ttu tracked">Performance Metrics for Data Science Models</h2>
         <div class="social-icon-links" aria-hidden="true">
   
   
@@ -158,12 +182,12 @@
   
 </div>
 
-        <p class="f4 mt4 lh-copy">Performance metrics indicate about&hellip; performance. And as a data scientist it is something you would like to optimise. But alot of heuristics are misleading and confusing, specially when the outcome is binary and you want to dichotomies estimated probabilities. Here I&rsquo;m going to share some useful insights.</p>
+        <p class="f4 mt4 lh-copy">You can’t improve what you don’t measure, but if don&rsquo;t know how to measure you can&rsquo;t tell if you are improving. This blog will help you understand how to use the {rtichoke} package - a tool for interactive visualizations of performance metrics and curves. You will see a lot of reproducible codes, and hopefully by understanding how to use {rtichoke} you will be able to understand better how to measure the performance of your prediction models.</p>
         <a class="mt4 action text" href="/about">Read More &rarr;</a>
       </div>
       <div class="tr w-50-l ml4">
       
-        <img class="mv0 w-70-m" src="img/gaston.png"/>
+        <img class="mv0 w-70-m" src="gaston_rtichoke_resized.png"/>
       
       </div>
     </div>
@@ -172,7 +196,7 @@
 <footer class="site-footer pv4 bt b--transparent ph5" role="contentinfo">
   <nav class="db dt-l w-100">
     <p class="site-copyright f7 db dtc-l v-mid w-100 w-33-l tc tl-l pv2 pv0-l mv0 lh-copy">
-      &copy; 2022 RStudio, Anywhere
+      &copy; 2022
       <span class="middot-divider"></span>
       Made with <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title"><a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/hugo-apero/" rel="dct:source">Hugo Apéro</a></span>.
       <br />
