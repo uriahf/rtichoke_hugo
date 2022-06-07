@@ -10,11 +10,6 @@ output:
     keep_md: yes
 ---
 
-```{r message=FALSE, warning=FALSE, include=FALSE}
-xaringanExtra::use_panelset()
-xaringanExtra::style_panelset_tabs(font_family = "inherit")
-```
-
 
 ## Welcome to rtichoke blog!
 
