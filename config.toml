@@ -4,7 +4,7 @@ languageCode = "en"
 title = "rtichoke blog"
 author = "Uriah Finkel"
 copyright = "" # set to override the auto generated copyright using org info and now year
-googleAnalytics = "G-7FG84QSX86"
+googleAnalytics = ""
 disqusShortname = "" # see params.utterances to use utterances instead of Disqus
 metaDataFormat = "yaml"
 footnoteReturnLinkContents = "&#8617;" # ↩
@@ -28,7 +28,7 @@ enableEmoji = true
     style = "github"
     
 [params]
-  description = "A blog that is dedicated for the rtichoke package and for performance metrics"
+  description = "A blog for the rtichoke package and for performance metrics"
   favicon = "/img/favicon.ico"
   mainSections = ["blog", "project", "talk"]
   navallcaps = true
@@ -38,9 +38,9 @@ enableEmoji = true
   socialInFooter = true
   # Default image for social sharing and search engines. 
   # Place image file in `static` folder and specify image name here.
-  sharing_image = "/img/papillons.jpg"
+  sharing_image = "gaston_rtichoke_resized.svg"
   # Twitter username (without @). Used when a visitor shares your site on Twitter.
-  twitter = "apreshill"
+  twitter = "uriahf"
   
   # use a built-in color theme
   # one of: forest / grayscale / peach / plum /
@@ -68,7 +68,7 @@ enableEmoji = true
   # Configuration of https://utteranc.es/ for comments
   [params.utterances]
     use_utterances = true
-    repo_name = "apreshill/apero"
+    repo_name = "uriahf/rtichoke_hugo"
     issue_term = "pathname" # url, pathname, or title
     theme = "boxy-light"
     label = "comments :crystal_ball:"
