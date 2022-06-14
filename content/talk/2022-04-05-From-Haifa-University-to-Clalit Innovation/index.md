@@ -1,6 +1,6 @@
 ---
 title: "From Haifa University to Clalit innovation"
-draft: true
+draft: false
 featured: true
 authors: 
   - Uriah Finkel
