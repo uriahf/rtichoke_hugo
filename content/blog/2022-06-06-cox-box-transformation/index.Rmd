@@ -5,6 +5,8 @@ date: '2022-06-06'
 slug: []
 categories: [replications, roc]
 tags: []
+header:
+  image: "cox-box-transformation.png"
 output: 
   html_document: 
     keep_md: yes
