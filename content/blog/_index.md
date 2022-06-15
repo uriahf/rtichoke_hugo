@@ -18,7 +18,7 @@ show_post_date: true
 show_post_thumbnail: true
 sidebar:
   author: Uriah Finkel
-  description: "Here you will see alot of reproducible code by {rtichoke} and some theory about performance metrics"
+  description: "Here you will see a lot of reproducible code by {rtichoke} and some theory about performance metrics."
   show_sidebar_adunit: true
   text_link_label: Subscribe via RSS
   text_link_url: /index.xml
