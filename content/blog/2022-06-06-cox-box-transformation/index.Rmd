@@ -3,7 +3,7 @@ title: Box-Cox transformation from Feature Engineering by Max Kuhn and Kjell Joh
 author: ''
 date: '2022-06-06'
 slug: []
-categories: [replications, roc]
+categories: [Replications, ROC]
 tags: []
 header:
   image: "cox-box-transformation.png"
@@ -57,7 +57,6 @@ ggplot2::theme_update(
 ```{r message=FALSE, warning=FALSE}
 library(caret)
 library(tidymodels)
-library(ggthemes)
 library(ggplot2)
 
 
@@ -107,7 +106,7 @@ trans_terms <- train(Class ~ PredictorA + PredictorB,
 
 
 
-### Creating ROC Curve with {yardstick}
+### Creating ROC Curve with yardstick
 
 ```{r message=FALSE, warning=FALSE, eval=FALSE}
 
@@ -141,9 +140,10 @@ trans_roc_plot <-
   scale_colour_manual(
     values = c("Natural Units" = "grey", 
                "Inverse Units" = "black")) + 
-  geom_abline(intercept = 0, slope = 1, col = "grey", lty = 2) 
+  geom_abline(intercept = 0, slope = 1, col = "grey", lty = 2) +
+  theme_classic()
 
-
+trans_roc_plot
 
 ```
 
@@ -167,7 +167,7 @@ xaringanExtra::use_panelset()
 
 ## rtichoke code
 
-### Creating ROC Curve with {rtichoke} {.panelset}
+### Creating ROC Curve with rtichoke {.panelset}
 
 #### By Probability Threshold
 
