@@ -4,7 +4,7 @@ author: ''
 date: '2022-08-01'
 slug: []
 categories: [Replications, ROC, Precision Recall]
-tags: []
+tags: [caret, yardstick]
 header:
   image: "featured.png"
 output: 
@@ -36,9 +36,11 @@ load("okc_glm_keyword.RData")
 
 ```
 
-### Creating Performance Metrics Curves with yardstick  {.panelset}
+### Creating Performance Metrics Curves with yardstick
 
-#### ROC
+<div class="panelset">
+  <div class="panel">    
+    <div class="panel-name">ROC</div>
 
 ```{r message=FALSE, warning=FALSE, eval=FALSE}
 library(yardstick)
@@ -76,7 +78,10 @@ glm_keyword$pred  %>%
 
 ![](roc-yardstick.svg)
 
-#### Precision Recall
+  </div>
+
+  <div class="panel">
+    <div class="panel-name">Precision Recall</div>
 
 ```{r message=FALSE, warning=FALSE, eval=FALSE}
 library(yardstick)
@@ -114,6 +119,9 @@ glm_keyword$pred  %>%
 
 
 ![](precision-recall-yardstick.svg)
+
+  </div>
+</div>
 
 ## rtichoke code
 
