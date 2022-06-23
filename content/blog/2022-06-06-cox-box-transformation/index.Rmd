@@ -167,9 +167,11 @@ xaringanExtra::use_panelset()
 
 ## rtichoke code
 
-### Creating ROC Curve with rtichoke {.panelset}
+### Creating ROC Curve with rtichoke 
 
-#### By Probability Threshold
+<div class="panelset">
+  <div class="panel">    
+    <div class="panel-name">By Probability Threshold</div>
 
 ```{r message=FALSE, warning=FALSE, eval=FALSE}
 library(rtichoke)
@@ -210,10 +212,11 @@ plotly::layout(plot_bgcolor = "#fff7f5",
 
 ```
 
+  </div>
 
-
-#### By Percent Positives Conditional Rate
-
+<div class="panelset">
+  <div class="panel">    
+    <div class="panel-name">By Percent Positives Conditional Rate</div>
 
 ```{r message=FALSE, warning=FALSE, eval=FALSE}
 library(rtichoke)
@@ -256,4 +259,5 @@ plotly::layout(plot_bgcolor = "#fff7f5",
 
 ```
 
+  </div>
 
