@@ -1,0 +1,25 @@
+---
+title: Issue 170
+subtitle: https://github.com/gadenbuie/xaringanExtra/issues/170
+output:
+  bookdown::html_document2: default
+  blogdown::html_page: default
+  rmarkdown::html_document: 
+    self_contained: false
+---
+
+```{r setup, echo = FALSE}
+xaringanExtra::use_panelset(FALSE)
+```
+
+# Panelset In R Markdown! {.panelset}
+
+## Tab One
+
+Amet enim aptent molestie vulputate pharetra
+vulputate primis et vivamus semper.
+
+## Tab Two
+
+Sit etiam malesuada arcu fusce ullamcorper
+interdum proin tincidunt curabitur felis?
